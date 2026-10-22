@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://b721eknsmr3o0"]
 
 [ext_resource type="Script" uid="uid://df0nhxoa5fup7" path="res://scripts/main_menu.gd" id="1_ak5k6"]
+[ext_resource type="Texture2D" uid="uid://ckup5gdgw5wyq" path="res://assets/Pattern.png" id="2_ewema"]
+[ext_resource type="Shader" uid="uid://b67e4wgv7hbib" path="res://assets/scroller.gdshader" id="2_m3c5h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m3c5h"]
+shader = ExtResource("2_m3c5h")
+shader_parameter/speed = 0.1
 
 [node name="main" type="Control" unique_id=412631385]
 layout_mode = 3
@@ -20,6 +26,25 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.10980392, 0.36862746, 0.6745098, 1)
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=539812518]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_m3c5h")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ewema")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=163812168]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Buttons" type="Control" parent="." unique_id=13473805]
 anchors_preset = 0
 offset_right = 40.0
@@ -35,24 +60,32 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=160248675]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1124871755]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 72
 text = "HEADS UP!"
 
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1084425710]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.13863784, 0.13863736, 0.13863751, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 46
 text = "Play!"
+flat = true
+
+[node name="Rules" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1359279502]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13863784, 0.13863736, 0.13863751, 1)
+theme_override_font_sizes/font_size = 46
+text = "Rules"
 flat = true
 
 [node name="Github" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1183808820]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.13863784, 0.13863736, 0.13863751, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 46
 text = "Github"
 flat = true
 

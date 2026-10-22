@@ -40,23 +40,27 @@ theme_override_constants/separation = 30
 
 [node name="NameInput" type="LineEdit" parent="CenterContainer/VBoxContainer" unique_id=222362144]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 placeholder_text = "Enter your name."
 alignment = 1
 flat = true
 
 [node name="IPInput" type="LineEdit" parent="CenterContainer/VBoxContainer" unique_id=1182089093]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 placeholder_text = "Leave blank if host."
 alignment = 1
 flat = true
 
 [node name="HostButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=196736558]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Host"
 flat = true
 
 [node name="JoinButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=511477960]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Join
 "
 flat = true
