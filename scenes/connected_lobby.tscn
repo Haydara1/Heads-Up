@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://brl3jey6n8wjy"]
 
 [ext_resource type="Script" uid="uid://wy37o7h0iser" path="res://scripts/connected_lobby.gd" id="1_3c6hh"]
-[ext_resource type="Theme" uid="uid://bm36romxwg8u" path="res://ui_themes/pixel_retro_lite/pixel_retro_lite.tres" id="2_uch3t"]
 
 [node name="Connected-lobby" type="Control" unique_id=295589882]
 layout_mode = 3
@@ -41,7 +40,6 @@ theme_override_constants/separation = 30
 
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2037741573]
 layout_mode = 2
-theme = ExtResource("2_uch3t")
 theme_override_font_sizes/font_size = 32
 text = "Play
 "
@@ -49,19 +47,16 @@ flat = true
 
 [node name="PackOption" type="OptionButton" parent="CenterContainer/VBoxContainer" unique_id=712590876]
 layout_mode = 2
-theme = ExtResource("2_uch3t")
 theme_override_font_sizes/font_size = 24
 flat = true
 alignment = 1
 
 [node name="StatusLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=52078235]
 layout_mode = 2
-theme = ExtResource("2_uch3t")
 theme_override_font_sizes/font_size = 20
 
 [node name="PlayersLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1651115392]
 layout_mode = 2
-theme = ExtResource("2_uch3t")
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
