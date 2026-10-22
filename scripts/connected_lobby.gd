@@ -10,8 +10,9 @@ extends Control
 func _ready() -> void:
 	# Available packs must match GameManager.PACKS.
 	pack_option.clear()
-	pack_option.add_item("General")
-	pack_option.add_item("Animals")
+
+	for pack_name in GameManager.packs.keys():
+		pack_option.add_item(str(pack_name))
 
 	NetworkManager.lobby_updated.connect(_on_lobby_updated)
 	

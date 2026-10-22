@@ -29,6 +29,47 @@ var latest_state: Dictionary = {}
 var latest_words: Dictionary = {}
 
 
+const PACKS_FILE := "res://assets/persons.json"
+
+var packs: Dictionary = {}
+
+
+func _ready() -> void:
+	load_packs()
+
+
+func load_packs() -> void:
+	if not FileAccess.file_exists(PACKS_FILE):
+		push_error("Packs file not found: " + PACKS_FILE)
+		return
+
+	var file := FileAccess.open(PACKS_FILE, FileAccess.READ)
+	if file == null:
+		push_error("Could not open packs file.")
+		return
+
+	var json := JSON.new()
+	var error := json.parse(file.get_as_text())
+
+	if error != OK:
+		push_error(
+			"JSON error at line %d: %s"
+			% [json.get_error_line(), json.get_error_message()]
+		)
+		return
+
+	if not json.data is Dictionary:
+		push_error("The packs JSON must contain an object.")
+		return
+
+	packs = json.data
+
+	for pack_name in packs:
+		if not packs[pack_name] is Array or packs[pack_name].is_empty():
+			push_error("Invalid or empty pack: " + str(pack_name))
+
+
+
 # Called by the host from the connected lobby.
 func start_game(pack_name: String = "General") -> void:
 	if not multiplayer.is_server():
@@ -37,7 +78,8 @@ func start_game(pack_name: String = "General") -> void:
 	if NetworkManager.players.size() < 2:
 		return
 
-	if not PACKS.has(pack_name):
+	if not packs.has(pack_name):
+		push_error("Unknown pack: " + pack_name)
 		return
 
 	selected_pack = pack_name
@@ -50,7 +92,7 @@ func start_game(pack_name: String = "General") -> void:
 
 	players_in_game.sort()
 
-	var pack: Array = PACKS[selected_pack]
+	var pack: Array = packs[selected_pack]
 
 	for id in players_in_game:
 		secret_words[id] = pack.pick_random()

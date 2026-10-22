@@ -22,21 +22,36 @@ color = Color(0.10980392, 0.36862746, 0.6745098, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1644569337]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.5
+offset_top = -85.0
+offset_right = 203.5
+offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 80
 
 [node name="TurnLabel" type="Label" parent="VBoxContainer" unique_id=1567906163]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="VBoxContainer" unique_id=193998905]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
 
 [node name="CharacterLabel" type="Label" parent="VBoxContainer" unique_id=1425943905]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
 
 [node name="ConfirmButton" type="Button" parent="VBoxContainer" unique_id=231619499]
 layout_mode = 2
-text = "Confirm"
+theme_override_font_sizes/font_size = 52
+text = "Press here to confirm!"
+flat = true

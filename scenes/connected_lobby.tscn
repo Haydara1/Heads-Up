@@ -40,16 +40,25 @@ theme_override_constants/separation = 30
 
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2037741573]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Play
 "
+flat = true
 
 [node name="PackOption" type="OptionButton" parent="CenterContainer/VBoxContainer" unique_id=712590876]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
+flat = true
+alignment = 1
 
 [node name="StatusLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=52078235]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 
 [node name="PlayersLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1651115392]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
