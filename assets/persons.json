@@ -1,6 +1,6 @@
 
 {
-  "Personnages historiques": [
+  "Historical figures": [
 	"Napoléon",
 	"Louis XIV",
 	"Victor Hugo",
@@ -11,7 +11,7 @@
 	"Isaac Newton",
     "Albert Einstein"
   ],
-  "Sportifs": [
+  "Sportsmen": [
 	"Zinédine Zidane",
 	"Kylian Mbappé",
 	"Muhammad Ali",
@@ -19,7 +19,7 @@
 	"Simone Biles",
     "Usain Bolt"
   ],
-  "Chanteurs": [
+  "Singers": [
 	"Beyoncé",
 	"Shakira",
 	"Mariah Carey",
@@ -28,7 +28,7 @@
     "Jungkook"
   ],
   
-  "Personnages d'anime": [
+  "Anime characters": [
 	"Tenma",
 	"Conan",
 	"Luffy",
@@ -49,7 +49,7 @@
     "Tony Tony Chopper"
   ],
 
-  "Personnages de dessin animé": [
+  "Cartoons characters": [
 	"Homer Simpson",
 	"Krokmou",
 	"Bob l'éponge",
@@ -75,7 +75,7 @@
 	"Lloyd Garmadon",
     "Shaun le mouton"
   ],
-  "Personnages de film": [
+  "Film characters": [
 	"Gollum",
 	"Spider-Man",
 	"Joker",
@@ -96,7 +96,7 @@
 	"Hercule Poirot",
     "Sherlock Holmes"
   ],
-  "Personnages de jeux vidéo": [
+  "Video games characters": [
 	"Mario",
 	"Link",
 	"Pitch",
