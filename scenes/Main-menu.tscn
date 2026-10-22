@@ -29,6 +29,7 @@ grow_vertical = 2
 color = Color(0.10980392, 0.36862746, 0.6745098, 1)
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=539812518]
+texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_m3c5h")
 layout_mode = 1
@@ -38,14 +39,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ewema")
-
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=163812168]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Buttons" type="Control" parent="." unique_id=13473805]
 anchors_preset = 0
