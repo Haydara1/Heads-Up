@@ -20,6 +20,14 @@ config/icon="res://icon.svg"
 NetworkManager="*uid://ca3ji8gyx6fq0"
 GameManager="*uid://bsmf3oo504ykt"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=3
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [gui]
 
 theme/custom_font="uid://cx4la4k5ylw8g"
