@@ -1,8 +1,8 @@
 extends Control
 
-@onready var name_input: LineEdit = $VBoxContainer/NameInput
-@onready var ip_input: LineEdit = $VBoxContainer/IPInput
-@onready var status_label: Label = $VBoxContainer/StatusLabel
+@onready var name_input: LineEdit = $CenterContainer/VBoxContainer/NameInput
+@onready var ip_input: LineEdit = $CenterContainer/VBoxContainer/IPInput
+@onready var status_label: Label = $CenterContainer/VBoxContainer/StatusLabel
 
 func _ready() -> void:
 	NetworkManager.connection_status.connect(_on_status)

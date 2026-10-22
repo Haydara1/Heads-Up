@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://wy37o7h0iser" path="res://scripts/connected_lobby.gd" id="1_3c6hh"]
 
+[sub_resource type="Gradient" id="Gradient_3c6hh"]
+colors = PackedColorArray(0.9607843, 0.7372549, 0.89411765, 1, 0.72156864, 0.91764706, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uch3t"]
+gradient = SubResource("Gradient_3c6hh")
+
 [node name="Connected-lobby" type="Control" unique_id=295589882]
 layout_mode = 3
 anchors_preset = 15
@@ -11,7 +17,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3c6hh")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=42405231]
+[node name="Background" type="TextureRect" parent="." unique_id=849636667]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_uch3t")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1925690486]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,23 +34,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=503336048]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="clr-rect" type="ColorRect" parent="CenterContainer" unique_id=57557933]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+color = Color(0.5882353, 0.5882353, 0.5882353, 0.49411765)
 
-[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=2037741573]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=503336048]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2037741573]
 layout_mode = 2
 text = "Play
 "
 
-[node name="PackOption" type="OptionButton" parent="VBoxContainer" unique_id=712590876]
+[node name="PackOption" type="OptionButton" parent="CenterContainer/VBoxContainer" unique_id=712590876]
 layout_mode = 2
 
-[node name="StatusLabel" type="Label" parent="VBoxContainer" unique_id=52078235]
+[node name="StatusLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=52078235]
 layout_mode = 2
 
-[node name="PlayersLabel" type="Label" parent="VBoxContainer" unique_id=1651115392]
+[node name="PlayersLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1651115392]
 layout_mode = 2
 
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

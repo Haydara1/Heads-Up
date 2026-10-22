@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://ct8o1ih8rb6lq" path="res://scripts/lobby.gd" id="1_o1atq"]
 
+[sub_resource type="Gradient" id="Gradient_o1atq"]
+colors = PackedColorArray(0.9607843, 0.7372549, 0.89411765, 1, 0.72156864, 0.91764706, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5gu6x"]
+gradient = SubResource("Gradient_o1atq")
+
 [node name="Lobby" type="Control" unique_id=1240909931]
 layout_mode = 3
 anchors_preset = 15
@@ -11,7 +17,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o1atq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1314532577]
+[node name="Background" type="TextureRect" parent="." unique_id=72757273]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5gu6x")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2101796544]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,23 +34,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NameInput" type="LineEdit" parent="VBoxContainer" unique_id=222362144]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=735768444]
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
+color = Color(0.60784316, 0.60784316, 0.60784316, 0.29411766)
 
-[node name="IPInput" type="LineEdit" parent="VBoxContainer" unique_id=1182089093]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1314532577]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_constants/separation = 30
 
-[node name="HostButton" type="Button" parent="VBoxContainer" unique_id=196736558]
+[node name="NameInput" type="LineEdit" parent="CenterContainer/VBoxContainer" unique_id=222362144]
+layout_mode = 2
+placeholder_text = "Enter your name."
+alignment = 1
+flat = true
+
+[node name="IPInput" type="LineEdit" parent="CenterContainer/VBoxContainer" unique_id=1182089093]
+layout_mode = 2
+placeholder_text = "Leave blank if host."
+alignment = 1
+flat = true
+
+[node name="HostButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=196736558]
 layout_mode = 2
 text = "Host"
+flat = true
 
-[node name="JoinButton" type="Button" parent="VBoxContainer" unique_id=511477960]
+[node name="JoinButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=511477960]
 layout_mode = 2
 text = "Join
 "
+flat = true
 
-[node name="StatusLabel" type="Label" parent="VBoxContainer" unique_id=540355650]
+[node name="StatusLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=540355650]
 layout_mode = 2
 
-[connection signal="pressed" from="VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]

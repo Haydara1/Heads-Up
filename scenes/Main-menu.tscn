@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://b721eknsmr3o0"]
 
+[ext_resource type="Script" uid="uid://df0nhxoa5fup7" path="res://scripts/main_menu.gd" id="1_ak5k6"]
+
 [sub_resource type="Gradient" id="Gradient_hp0fq"]
-colors = PackedColorArray(1, 0, 0, 1, 0.5647059, 0.10980392, 0.36862746, 1)
+colors = PackedColorArray(1, 0.72156864, 0.91764706, 1, 0.7372549, 0.89411765, 0.9607843, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ak5k6"]
 gradient = SubResource("Gradient_hp0fq")
@@ -13,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ak5k6")
 
 [node name="BackgroundColor" type="TextureRect" parent="." unique_id=425253190]
 layout_mode = 1
@@ -43,6 +46,7 @@ offset_left = 158.0
 offset_top = 462.0
 offset_right = 330.0
 offset_bottom = 857.0
+color = Color(0.91764706, 1, 0.72156864, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="BackgroundResponsive" unique_id=1559102273]
 layout_mode = 0
@@ -50,6 +54,7 @@ offset_left = 900.0
 offset_top = 220.0
 offset_right = 1430.0
 offset_bottom = 369.0
+color = Color(0.9607843, 0.7372549, 0.89411765, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="BackgroundResponsive" unique_id=1502796154]
 layout_mode = 0
@@ -57,3 +62,37 @@ offset_left = -389.0
 offset_top = 36.0
 offset_right = 160.0
 offset_bottom = 233.0
+color = Color(0.72156864, 0.91764706, 1, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=143093851]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=160248675]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1124871755]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "HEADS UP!"
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1084425710]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13863784, 0.13863736, 0.13863751, 1)
+theme_override_font_sizes/font_size = 32
+text = "Play!"
+flat = true
+
+[node name="Github" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1183808820]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13863784, 0.13863736, 0.13863751, 1)
+theme_override_font_sizes/font_size = 32
+text = "Github"
+flat = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

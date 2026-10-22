@@ -1,10 +1,10 @@
 
 extends Control
 
-@onready var pack_option: OptionButton = $VBoxContainer/PackOption
-@onready var status_label: Label = $VBoxContainer/StatusLabel
-@onready var players_label: Label = $VBoxContainer/PlayersLabel
-@onready var play_button: Button = $VBoxContainer/PlayButton
+@onready var pack_option: OptionButton = $CenterContainer/VBoxContainer/PackOption
+@onready var status_label: Label = $CenterContainer/VBoxContainer/StatusLabel
+@onready var players_label: Label = $CenterContainer/VBoxContainer/PlayersLabel
+@onready var play_button: Button = $CenterContainer/VBoxContainer/PlayButton
 
 
 func _ready() -> void:
