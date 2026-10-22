@@ -2,12 +2,6 @@
 
 [ext_resource type="Script" uid="uid://w2k8lcbi321i" path="res://scripts/gameplay.gd" id="1_7biu0"]
 
-[sub_resource type="Gradient" id="Gradient_7biu0"]
-colors = PackedColorArray(0.9607843, 0.7372549, 0.89411765, 1, 0.7372549, 0.89411765, 0.9607843, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_00tan"]
-gradient = SubResource("Gradient_7biu0")
-
 [node name="Gameplay" type="Control" unique_id=866181721]
 layout_mode = 3
 anchors_preset = 15
@@ -17,14 +11,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7biu0")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1334942925]
+[node name="TextureRect" type="ColorRect" parent="." unique_id=864786079]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_00tan")
+color = Color(0.10980392, 0.36862746, 0.6745098, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1644569337]
 layout_mode = 1

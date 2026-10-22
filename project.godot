@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 NetworkManager="*uid://ca3ji8gyx6fq0"
 GameManager="*uid://bsmf3oo504ykt"
 
+[gui]
+
+theme/custom_font="uid://cx4la4k5ylw8g"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
