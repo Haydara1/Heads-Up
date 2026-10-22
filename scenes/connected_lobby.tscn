@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://brl3jey6n8wjy"]
+
+[ext_resource type="Script" uid="uid://wy37o7h0iser" path="res://scripts/connected_lobby.gd" id="1_3c6hh"]
+
+[node name="Connected-lobby" type="Control" unique_id=295589882]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3c6hh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=42405231]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="." unique_id=2037741573]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Play
+"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
