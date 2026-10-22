@@ -14,7 +14,7 @@ func _ready() -> void:
 	pack_option.add_item("Animals")
 
 	NetworkManager.lobby_updated.connect(_on_lobby_updated)
-
+	
 	_on_lobby_updated(NetworkManager.players)
 
 	# Only the host can start the game.
@@ -32,15 +32,17 @@ func _on_play_button_pressed() -> void:
 	GameManager.start_game(pack_name)
 
 
+
 func _on_lobby_updated(players: Dictionary) -> void:
 	var lines: Array[String] = []
 
 	for id in players:
 		var player: Dictionary = players[id]
-		lines.append(str(player["name"]))
+		lines.append(
+			str(player.get("name", "Player"))
+			+ " — "
+			+ str(player.get("score", 0))
+			+ " points"
+		)
 
-	players_label.text = "Players:\n" + "\n".join(lines)
-
-	play_button.disabled = (
-		not multiplayer.is_server() or players.size() < 2
-	)
+	players_label.text = "\n".join(lines)

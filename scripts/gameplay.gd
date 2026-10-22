@@ -9,28 +9,23 @@ extends Control
 
 func _ready() -> void:
 	GameManager.state_changed.connect(_on_state_changed)
-	GameManager.word_changed.connect(_on_word_changed)
+	GameManager.words_changed.connect(_on_words_changed)
+	confirm_button.pressed.connect(GameManager.submit_confirmation)
 
-	confirm_button.pressed.connect(
-		GameManager.submit_correct_guess
-	)
-
-	word_label.text = "Waiting for game..."
+	word_label.text = "Waiting for words..."
 	confirm_button.disabled = true
 
-	# Ask for the latest game state and word.
 	GameManager.request_sync_for_local_player()
 
-	# Also display data that arrived before this scene loaded.
 	if not GameManager.latest_state.is_empty():
 		_on_state_changed(GameManager.latest_state)
 
-	_on_word_changed(GameManager.latest_word)
+	_on_words_changed(GameManager.latest_words)
 
 
 func _on_state_changed(state: Dictionary) -> void:
-	var players: Dictionary = state["players"]
-	var active_id := int(state["current_turn_peer"])
+	var players: Dictionary = state.get("players", {})
+	var confirmed: Array = state.get("confirmed_order", [])
 	var my_id := multiplayer.get_unique_id()
 
 	var lines: Array[String] = []
@@ -38,28 +33,50 @@ func _on_state_changed(state: Dictionary) -> void:
 	for id in players:
 		var player: Dictionary = players[id]
 		lines.append(
-			str(player["name"]) + ": " +
-			str(player["score"])
+			str(player.get("name", "Player"))
+			+ ": "
+			+ str(player.get("score", 0))
+			+ " points"
 		)
 
 	score_label.text = "\n".join(lines)
 
-	if my_id == active_id:
-		turn_label.text = "Your turn! Guess your word."
+	if not bool(state.get("running", false)):
+		turn_label.text = "Round finished!"
+	elif confirmed.has(my_id):
+		turn_label.text = "Confirmed! Waiting for everyone else..."
 	else:
-		var active_player: Dictionary = players.get(
-			active_id,
-			{"name": "Player"}
-		)
-		turn_label.text = str(active_player["name"]) + "'s turn"
+		turn_label.text = "Guess your word, then confirm!"
 
 	confirm_button.disabled = (
-		not state["running"] or my_id == active_id
+		not bool(state.get("running", false))
+		or confirmed.has(my_id)
 	)
 
 
-func _on_word_changed(word: String) -> void:
-	if word.is_empty():
-		word_label.text = "Guess the word!"
-	else:
-		word_label.text = word
+func _on_words_changed(words: Dictionary) -> void:
+	var players: Dictionary = GameManager.latest_state.get(
+		"players",
+		NetworkManager.players
+	)
+
+	var my_id := multiplayer.get_unique_id()
+	var lines: Array[String] = []
+
+	for id in players:
+		var player: Dictionary = players[id]
+		var player_id := int(id)
+		var displayed_word := str(words.get(player_id, ""))
+
+		if player_id == my_id:
+			displayed_word = "??? (your word)"
+		elif displayed_word.is_empty():
+			displayed_word = "Waiting..."
+
+		lines.append(
+			str(player.get("name", "Player"))
+			+ ": "
+			+ displayed_word
+		)
+
+	word_label.text = "\n".join(lines)
