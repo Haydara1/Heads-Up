@@ -8,8 +8,6 @@
 shader = ExtResource("2_m3c5h")
 shader_parameter/speed = 0.1
 
-[sub_resource type="Theme" id="Theme_m3c5h"]
-
 [node name="main" type="Control" unique_id=412631385]
 layout_mode = 3
 anchors_preset = 15
@@ -65,7 +63,6 @@ text = "HEADS UP!"
 
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1084425710]
 layout_mode = 2
-theme = SubResource("Theme_m3c5h")
 theme_override_colors/font_color = Color(0.13863784, 0.13863736, 0.13863751, 1)
 theme_override_font_sizes/font_size = 46
 text = "Play!"
