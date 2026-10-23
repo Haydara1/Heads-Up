@@ -45,11 +45,13 @@ text = "Play
 "
 flat = true
 
-[node name="PackOption" type="OptionButton" parent="CenterContainer/VBoxContainer" unique_id=712590876]
+[node name="PackList" type="ItemList" parent="CenterContainer/VBoxContainer" unique_id=2049872983]
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-flat = true
-alignment = 1
+select_mode = 2
+allow_reselect = true
+allow_rmb_select = true
 
 [node name="StatusLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=52078235]
 layout_mode = 2
@@ -61,4 +63,4 @@ theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_start_button_pressed"]
