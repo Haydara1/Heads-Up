@@ -32,6 +32,7 @@ var latest_words: Dictionary = {}
 const PACKS_FILE := "res://assets/persons.json"
 
 var packs: Dictionary = {}
+var selected_packs: Array[String] = ["General"]
 
 
 func _ready() -> void:
@@ -71,18 +72,31 @@ func load_packs() -> void:
 
 
 # Called by the host from the connected lobby.
-func start_game(pack_name: String = "General") -> void:
+func start_game(pack_names: Array = ["General"]) -> void:
 	if not multiplayer.is_server():
 		return
 
 	if NetworkManager.players.size() < 2:
 		return
 
-	if not packs.has(pack_name):
-		push_error("Unknown pack: " + pack_name)
+	# Keep only valid, unique pack names.
+	selected_packs.clear()
+
+	for pack_name in pack_names:
+		if packs.has(pack_name) and not selected_packs.has(pack_name):
+			selected_packs.append(pack_name)
+
+	if selected_packs.is_empty():
+		push_error("No valid packs selected.")
 		return
 
-	selected_pack = pack_name
+	# Combine the words from all selected packs.
+	var pack: Array = get_combined_words(selected_packs)
+
+	if pack.is_empty():
+		push_error("The selected packs contain no words.")
+		return
+
 	players_in_game.clear()
 	secret_words.clear()
 	confirmed_order.clear()
@@ -91,8 +105,6 @@ func start_game(pack_name: String = "General") -> void:
 		players_in_game.append(int(id))
 
 	players_in_game.sort()
-
-	var pack: Array = packs[selected_pack]
 
 	for id in players_in_game:
 		secret_words[id] = pack.pick_random()
@@ -165,8 +177,11 @@ func _broadcast_state() -> void:
 		"players": NetworkManager.players.duplicate(true),
 		"confirmed_order": confirmed_order.duplicate(),
 		"running": running,
-		"selected_pack": selected_pack
+		"selected_packs": selected_packs.duplicate()
 	}
+
+	receive_state(state)
+	receive_state.rpc(state)
 
 	receive_state(state)
 	receive_state.rpc(state)
@@ -221,8 +236,8 @@ func _send_sync(id: int) -> void:
 		"players": NetworkManager.players.duplicate(true),
 		"confirmed_order": confirmed_order.duplicate(),
 		"running": running,
-		"selected_pack": selected_pack
-	}
+		"selected_packs": selected_packs.duplicate()
+		}
 
 	if id == 1:
 		receive_state(state)
@@ -231,11 +246,28 @@ func _send_sync(id: int) -> void:
 
 	_send_words_to_player(id)
 
+func get_combined_words(pack_names: Array) -> Array:
+	var combined_words: Array = []
+
+	for pack_name in pack_names:
+		if not packs.has(pack_name):
+			continue
+
+		for word in packs[pack_name]:
+			if not combined_words.has(word):
+				combined_words.append(word)
+
+	return combined_words
 
 @rpc("authority", "call_remote", "reliable")
 func receive_state(state: Dictionary) -> void:
 	latest_state = state.duplicate(true)
 	running = bool(state.get("running", false))
+
+	# Synchronize the selected packs.
+	selected_packs.clear()
+	for pack_name in state.get("selected_packs", ["General"]):
+		selected_packs.append(str(pack_name))
 
 	var updated_players: Dictionary = state.get("players", {})
 	NetworkManager.players = updated_players.duplicate(true)
