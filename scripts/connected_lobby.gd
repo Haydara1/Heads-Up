@@ -7,8 +7,6 @@ extends Control
 @onready var pack_list : ItemList = $CenterContainer/VBoxContainer/PackList
 
 func _ready() -> void:
-	pack_list.select_mode = ItemList.SELECT_MULTI
-	
 	# Wait until the GameManager has loaded the packs.
 	if GameManager.packs.is_empty():
 		GameManager.load_packs()
@@ -16,7 +14,7 @@ func _ready() -> void:
 	pack_list.clear()
 	
 	for pack_name in GameManager.packs.keys():
-		pack_list.add_item(str(pack_name))
+		pack_list.add_item(str(pack_name), null, true)
 		
 	# Select the first pack by default.
 	if pack_list.item_count > 0:
