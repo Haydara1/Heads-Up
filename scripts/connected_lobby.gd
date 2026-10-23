@@ -18,7 +18,11 @@ func _ready() -> void:
 	
 	circleTransition.visible = true
 	
-	pack_list.get_v_scroll_bar().visible = false # Hides the vertical scroll bar.
+	var scrollbar = pack_list.get_v_scroll_bar()
+	scrollbar.add_theme_stylebox_override("scroll", StyleBoxEmpty.new())
+	scrollbar.add_theme_stylebox_override("grabber", StyleBoxEmpty.new())
+	scrollbar.add_theme_stylebox_override("grabber_highlight", StyleBoxEmpty.new())
+	scrollbar.add_theme_stylebox_override("grabber_pressed", StyleBoxEmpty.new())
 	
 	# Wait until the GameManager has loaded the packs.
 	if GameManager.packs.is_empty():
