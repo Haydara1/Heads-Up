@@ -1,0 +1,75 @@
+[gd_resource type="Theme" format=3 uid="uid://b7boe0d6g3gmv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6tc5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ejhg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owdqa"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j27p1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4v718"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8anr8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ep12d"]
+bg_color = Color(0.89411765, 0.9411765, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0m6u"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdxj0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfbwk"]
+bg_color = Color(0.18538323, 0.18538329, 0.18538317, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubuie"]
+bg_color = Color(0.38431373, 0.5647059, 0.89411765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[resource]
+ItemList/colors/font_color = Color(0.65, 0.65, 0.65, 1)
+ItemList/colors/font_hovered_color = Color(0.585062, 0.585062, 0.58506197, 1)
+ItemList/colors/font_hovered_selected_color = Color(0.6384007, 0.48314053, 0.06180518, 1)
+ItemList/colors/font_selected_color = Color(0.8392157, 0.6392157, 0.09803922, 1)
+ItemList/constants/h_separation = 40
+ItemList/constants/outline_size = 2
+ItemList/constants/v_separation = 13
+ItemList/styles/cursor = SubResource("StyleBoxFlat_h6tc5")
+ItemList/styles/cursor_unfocused = SubResource("StyleBoxFlat_8ejhg")
+ItemList/styles/focus = SubResource("StyleBoxFlat_owdqa")
+ItemList/styles/hovered = SubResource("StyleBoxFlat_j27p1")
+ItemList/styles/hovered_selected = SubResource("StyleBoxFlat_4v718")
+ItemList/styles/hovered_selected_focus = SubResource("StyleBoxFlat_8anr8")
+ItemList/styles/panel = SubResource("StyleBoxFlat_ep12d")
+ItemList/styles/selected = SubResource("StyleBoxFlat_y0m6u")
+ItemList/styles/selected_focus = SubResource("StyleBoxFlat_vdxj0")
+Panel/styles/panel = SubResource("StyleBoxFlat_sfbwk")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ubuie")

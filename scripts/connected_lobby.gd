@@ -18,6 +18,8 @@ func _ready() -> void:
 	
 	circleTransition.visible = true
 	
+	pack_list.get_v_scroll_bar().visible = false # Hides the vertical scroll bar.
+	
 	# Wait until the GameManager has loaded the packs.
 	if GameManager.packs.is_empty():
 		GameManager.load_packs()

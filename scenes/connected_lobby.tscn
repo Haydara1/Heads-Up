@@ -35,10 +35,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="clr-rect" type="ColorRect" parent="CenterContainer" unique_id=57557933]
-custom_minimum_size = Vector2(400, 400)
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=2116444896]
+custom_minimum_size = Vector2(400, 500)
 layout_mode = 2
-color = Color(0.5882353, 0.5882353, 0.5882353, 0.49411765)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=503336048]
 custom_minimum_size = Vector2(200, 0)

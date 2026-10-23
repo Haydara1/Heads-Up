@@ -30,6 +30,7 @@ window/stretch/aspect="expand"
 
 [gui]
 
+theme/custom="uid://b7boe0d6g3gmv"
 theme/custom_font="uid://cx4la4k5ylw8g"
 
 [physics]
