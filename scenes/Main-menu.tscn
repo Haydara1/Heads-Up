@@ -3,10 +3,17 @@
 [ext_resource type="Script" uid="uid://df0nhxoa5fup7" path="res://scripts/main_menu.gd" id="1_ak5k6"]
 [ext_resource type="Texture2D" uid="uid://ckup5gdgw5wyq" path="res://assets/Pattern.png" id="2_ewema"]
 [ext_resource type="Shader" uid="uid://b67e4wgv7hbib" path="res://assets/scroller.gdshader" id="2_m3c5h"]
+[ext_resource type="Shader" uid="uid://yoyjgm4sxky6" path="res://assets/CircleTransition.gdshader" id="4_iq4lo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m3c5h"]
 shader = ExtResource("2_m3c5h")
 shader_parameter/speed = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ao1dd"]
+shader = ExtResource("4_iq4lo")
+shader_parameter/circle_size = 0.0
+shader_parameter/screen_width = 1280.0
+shader_parameter/screen_height = 720.0
 
 [node name="main" type="Control" unique_id=412631385]
 layout_mode = 3
@@ -58,8 +65,10 @@ theme_override_constants/separation = 15
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1124871755]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 106
 text = "HEADS UP!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1084425710]
 layout_mode = 2
@@ -81,6 +90,32 @@ theme_override_colors/font_color = Color(0.13863784, 0.13863736, 0.13863751, 1)
 theme_override_font_sizes/font_size = 46
 text = "Github"
 flat = true
+
+[node name="Label" type="Label" parent="." unique_id=1882697753]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
+text = "Made by Haydara and Isma!"
+
+[node name="CircleTransition" type="ColorRect" parent="." unique_id=1006340263]
+visible = false
+material = SubResource("ShaderMaterial_ao1dd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Github" to="." method="_on_github_pressed"]

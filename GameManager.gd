@@ -169,7 +169,7 @@ func _handle_confirmation(id: int) -> void:
 	if confirmed_order.size() == players_in_game.size():
 		running = false
 		_broadcast_state()
-		return_to_lobby.rpc()
+		#return_to_lobby.rpc()
 
 
 func _broadcast_state() -> void:

@@ -6,7 +6,18 @@ extends Control
 @onready var play_button: Button = $CenterContainer/VBoxContainer/PlayButton
 @onready var pack_list : ItemList = $CenterContainer/VBoxContainer/PackList
 
+@onready var circleTransition: ColorRect = $CircleTransition
+
+
 func _ready() -> void:
+	var mat := circleTransition.material as ShaderMaterial
+
+	mat.set_shader_parameter("screen_width", get_viewport_rect().size.x)
+	mat.set_shader_parameter("screen_height", get_viewport_rect().size.y)
+	mat.set_shader_parameter("circle_size", 0.0)
+	
+	circleTransition.visible = true
+	
 	# Wait until the GameManager has loaded the packs.
 	if GameManager.packs.is_empty():
 		GameManager.load_packs()
@@ -16,12 +27,6 @@ func _ready() -> void:
 	for pack_name in GameManager.packs.keys():
 		pack_list.add_item(str(pack_name), null, true)
 		
-	# Select the first pack by default.
-	if pack_list.item_count > 0:
-		pack_list.select(0)
-	
-	print("Available packs: ", GameManager.packs.keys())
-	print("Items in PackList: ", pack_list.item_count)
 	
 	NetworkManager.lobby_updated.connect(_on_lobby_updated)
 	
@@ -29,6 +34,16 @@ func _ready() -> void:
 	
 	# Only the host can start the game.
 	play_button.disabled = not multiplayer.is_server()
+	
+	var tween := create_tween()
+	tween.tween_method(
+		func(value: float) -> void:
+			mat.set_shader_parameter("circle_size", value),
+		0.0,
+		1.05,
+		1.0
+	)
+
 
 
 func _on_start_button_pressed() -> void:
@@ -45,6 +60,19 @@ func _on_start_button_pressed() -> void:
 
 	if not multiplayer.is_server():
 		return
+
+	var mat := circleTransition.material as ShaderMaterial
+	
+	var tween := create_tween()
+	tween.tween_method(
+		func(value: float) -> void:
+			mat.set_shader_parameter("circle_size", value),
+		1.05,
+		0,
+		0.8
+	)
+	
+	await tween.finished
 
 	GameManager.start_game(selected_names)
 

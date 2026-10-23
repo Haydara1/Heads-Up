@@ -6,8 +6,19 @@ extends Control
 @onready var word_label: Label = $VBoxContainer/CharacterLabel
 @onready var confirm_button: Button = $VBoxContainer/ConfirmButton
 
+@onready var circleTransition: ColorRect = $CircleTransition
+
+var transition_started := false
 
 func _ready() -> void:
+	var mat := circleTransition.material as ShaderMaterial
+
+	mat.set_shader_parameter("screen_width", get_viewport_rect().size.x)
+	mat.set_shader_parameter("screen_height", get_viewport_rect().size.y)
+	mat.set_shader_parameter("circle_size", 0.0)
+	
+	circleTransition.visible = true
+	
 	GameManager.state_changed.connect(_on_state_changed)
 	GameManager.words_changed.connect(_on_words_changed)
 	confirm_button.pressed.connect(GameManager.submit_confirmation)
@@ -21,6 +32,15 @@ func _ready() -> void:
 		_on_state_changed(GameManager.latest_state)
 
 	_on_words_changed(GameManager.latest_words)
+	
+	var tween := create_tween()
+	tween.tween_method(
+		func(value: float) -> void:
+			mat.set_shader_parameter("circle_size", value),
+		0.0,
+		1.05,
+		1.0
+	)
 
 
 func _on_state_changed(state: Dictionary) -> void:
@@ -52,6 +72,10 @@ func _on_state_changed(state: Dictionary) -> void:
 		not bool(state.get("running", false))
 		or confirmed.has(my_id)
 	)
+	
+	if not bool(state.get("running", false)) and not transition_started:
+		transition_started = true
+		_return_to_lobby_with_transition()
 
 
 func _on_words_changed(words: Dictionary) -> void:
@@ -80,3 +104,25 @@ func _on_words_changed(words: Dictionary) -> void:
 		)
 
 	word_label.text = "\n".join(lines)
+
+func _return_to_lobby_with_transition() -> void:
+	var mat := circleTransition.material as ShaderMaterial
+
+	circleTransition.visible = true
+	circleTransition.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	var tween := create_tween()
+	tween.tween_method(
+		func(value: float) -> void:
+			mat.set_shader_parameter("circle_size", value),
+		1.05,
+		0.0,
+		1.0
+	)
+
+	await tween.finished
+
+	if multiplayer.is_server():
+		GameManager.return_to_lobby.rpc()
+	else:
+		GameManager.return_to_lobby.rpc_id(1)
