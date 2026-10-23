@@ -42,8 +42,6 @@ func _ready() -> void:
 	# Only the host can start the game.
 	play_button.visible = multiplayer.is_server()
 	
-	play_button.disabled = GameManager.players_in_game.size() > 1
-	
 	if multiplayer.is_server():
 		var address = NetworkManager.get_local_ip()
 		ip_label.text = "Your IP is: {0} \n share it with other players!".format([address])
@@ -91,7 +89,6 @@ func _on_start_button_pressed() -> void:
 func _on_lobby_updated(players: Dictionary) -> void:
 	var lines: Array[String] = []
 	
-	play_button.disabled = GameManager.players_in_game.size() > 1
 	
 	for id in players:
 		var player: Dictionary = players[id]
