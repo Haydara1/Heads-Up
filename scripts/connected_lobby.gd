@@ -39,7 +39,9 @@ func _ready() -> void:
 	_on_lobby_updated(NetworkManager.players)
 	
 	# Only the host can start the game.
-	play_button.disabled = not multiplayer.is_server()
+	play_button.visible = multiplayer.is_server()
+	
+	play_button.disabled = GameManager.players_in_game.size() > 1
 	
 	var tween := create_tween()
 	tween.tween_method(
@@ -59,10 +61,7 @@ func _on_start_button_pressed() -> void:
 		selected_names.append(pack_list.get_item_text(index))
 
 	if selected_names.is_empty():
-		print("Please select at least one pack.")
 		return
-
-	print("Selected packs: ", selected_names)
 
 	if not multiplayer.is_server():
 		return
@@ -86,7 +85,9 @@ func _on_start_button_pressed() -> void:
 
 func _on_lobby_updated(players: Dictionary) -> void:
 	var lines: Array[String] = []
-
+	
+	play_button.disabled = GameManager.players_in_game.size() > 1
+	
 	for id in players:
 		var player: Dictionary = players[id]
 		lines.append(

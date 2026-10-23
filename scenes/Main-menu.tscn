@@ -9,6 +9,13 @@
 shader = ExtResource("2_m3c5h")
 shader_parameter/speed = 0.1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iq4lo"]
+bg_color = Color(0.38431373, 0.5647059, 0.89411765, 0.7647059)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ao1dd"]
 shader = ExtResource("4_iq4lo")
 shader_parameter/circle_size = 0.0
@@ -58,6 +65,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1163912974]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iq4lo")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=160248675]
 layout_mode = 2
 theme_override_constants/separation = 15
@@ -65,6 +77,8 @@ theme_override_constants/separation = 15
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1124871755]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 106
 text = "HEADS UP!"
 horizontal_alignment = 1
