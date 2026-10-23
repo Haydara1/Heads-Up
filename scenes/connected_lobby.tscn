@@ -101,6 +101,10 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 
+[node name="IPLabel" type="Label" parent="HBoxContainer/RightContainer/VBoxContainer" unique_id=158876201]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
 [node name="CircleTransition" type="ColorRect" parent="." unique_id=143299835]
 visible = false
 material = SubResource("ShaderMaterial_ff53a")

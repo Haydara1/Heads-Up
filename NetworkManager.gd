@@ -99,4 +99,4 @@ func get_local_ip() -> String:
 		or address.begins_with("172."):
 			return address
 
-	return "IP not found"
+	return IP.get_local_addresses()[0]

@@ -5,6 +5,7 @@ extends Control
 @onready var players_label: Label = $HBoxContainer/RightContainer/VBoxContainer/PlayersLabel
 @onready var play_button: Button = $HBoxContainer/LeftContainer/VBoxContainer/PlayButton
 @onready var pack_list : ItemList = $HBoxContainer/LeftContainer/VBoxContainer/PackList
+@onready var ip_label : Label = $HBoxContainer/RightContainer/VBoxContainer/IPLabel
 
 @onready var circleTransition: ColorRect = $CircleTransition
 
@@ -42,6 +43,10 @@ func _ready() -> void:
 	play_button.visible = multiplayer.is_server()
 	
 	play_button.disabled = GameManager.players_in_game.size() > 1
+	
+	if multiplayer.is_server():
+		var address = NetworkManager.get_local_ip()
+		ip_label.text = "Your IP is: {0} \n share it with other players!".format([address])
 	
 	var tween := create_tween()
 	tween.tween_method(
