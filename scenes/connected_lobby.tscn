@@ -27,45 +27,79 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.10980392, 0.36862746, 0.6745098, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1925690486]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1813443454]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=2116444896]
+[node name="LeftContainer" type="CenterContainer" parent="HBoxContainer" unique_id=1493025353]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/LeftContainer" unique_id=1586893290]
 custom_minimum_size = Vector2(400, 500)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=503336048]
-custom_minimum_size = Vector2(200, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftContainer" unique_id=73176567]
 layout_mode = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 50
 
-[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2037741573]
+[node name="PackLabel" type="Label" parent="HBoxContainer/LeftContainer/VBoxContainer" unique_id=157274181]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Play
-"
-flat = true
+theme_override_font_sizes/font_size = 20
+text = "Please select at least one pack,
+ you can select multiple categories
+ for a harder challenge."
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PackList" type="ItemList" parent="CenterContainer/VBoxContainer" unique_id=2049872983]
-custom_minimum_size = Vector2(300, 150)
+[node name="PackList" type="ItemList" parent="HBoxContainer/LeftContainer/VBoxContainer" unique_id=2049872983]
+custom_minimum_size = Vector2(300, 200)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 select_mode = 2
 
-[node name="StatusLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=52078235]
+[node name="PlayButton" type="Button" parent="HBoxContainer/LeftContainer/VBoxContainer" unique_id=2037741573]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 40
+text = "Play
+"
+flat = true
 
-[node name="PlayersLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1651115392]
+[node name="RightContainer" type="CenterContainer" parent="HBoxContainer" unique_id=1925690486]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/RightContainer" unique_id=2116444896]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightContainer" unique_id=503336048]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer/RightContainer/VBoxContainer" unique_id=1554313020]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Players and scores"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayersLabel" type="Label" parent="HBoxContainer/RightContainer/VBoxContainer" unique_id=1651115392]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="HBoxContainer/RightContainer/VBoxContainer" unique_id=52078235]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
 
 [node name="CircleTransition" type="ColorRect" parent="." unique_id=143299835]
 visible = false
@@ -79,4 +113,4 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftContainer/VBoxContainer/PlayButton" to="." method="_on_start_button_pressed"]

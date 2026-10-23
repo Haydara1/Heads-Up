@@ -1,10 +1,10 @@
 
 extends Control
 
-@onready var status_label: Label = $CenterContainer/VBoxContainer/StatusLabel
-@onready var players_label: Label = $CenterContainer/VBoxContainer/PlayersLabel
-@onready var play_button: Button = $CenterContainer/VBoxContainer/PlayButton
-@onready var pack_list : ItemList = $CenterContainer/VBoxContainer/PackList
+@onready var status_label: Label = $HBoxContainer/RightContainer/VBoxContainer/StatusLabel
+@onready var players_label: Label = $HBoxContainer/RightContainer/VBoxContainer/PlayersLabel
+@onready var play_button: Button = $HBoxContainer/LeftContainer/VBoxContainer/PlayButton
+@onready var pack_list : ItemList = $HBoxContainer/LeftContainer/VBoxContainer/PackList
 
 @onready var circleTransition: ColorRect = $CircleTransition
 
