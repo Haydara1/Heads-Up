@@ -46,7 +46,7 @@ func _on_host_button_pressed() -> void:
 	var error := NetworkManager.host_game(name_input.text)
 
 	if error != OK:
-		status_label.text = "Could not create room: " + str(error)
+		get_tree().change_scene_to_file("res://scenes/error.tscn")
 		return
 
 	var tree := get_tree()
@@ -82,6 +82,7 @@ func _on_join_button_pressed() -> void:
 
 	if error != OK:
 		status_label.text = "Could not connect: " + str(error)
+		get_tree().change_scene_to_file("res://scenes/error.tscn")
 
 func _on_status(message: String) -> void:
 	status_label.text = message

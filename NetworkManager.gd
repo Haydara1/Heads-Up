@@ -22,6 +22,7 @@ func host_game(username: String) -> Error:
 	var peer := ENetMultiplayerPeer.new()
 	var error := peer.create_server(PORT, MAX_CLIENTS)
 	if error != OK:
+		get_tree().change_scene_to_file("res://scenes/error.tscn")
 		return error
 
 	multiplayer.multiplayer_peer = peer
@@ -35,6 +36,7 @@ func join_game(ip: String, username: String) -> Error:
 	var peer := ENetMultiplayerPeer.new()
 	var error := peer.create_client(ip.strip_edges(), PORT)
 	if error != OK:
+		get_tree().change_scene_to_file("res://scenes/error.tscn")
 		return error
 
 	multiplayer.multiplayer_peer = peer
