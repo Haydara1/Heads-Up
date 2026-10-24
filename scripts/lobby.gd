@@ -90,3 +90,10 @@ func _on_lobby_updated(_players: Dictionary) -> void:
 	if multiplayer.multiplayer_peer.get_connection_status() \
 	== MultiplayerPeer.CONNECTION_CONNECTED:
 		get_tree().change_scene_to_file("res://scenes/connected_lobby.tscn")
+
+# Disable join button if IP text is empty
+func _on_ip_input_text_changed(new_text: String) -> void:
+	if new_text != "":
+		$CenterContainer/VBoxContainer/JoinButton.disabled = false
+	else:
+		$CenterContainer/VBoxContainer/JoinButton.disabled = true

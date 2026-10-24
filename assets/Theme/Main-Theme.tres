@@ -37,6 +37,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdxj0"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7syhx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfbwk"]
 bg_color = Color(0.18538323, 0.18538329, 0.18538317, 1)
 corner_radius_top_left = 20
@@ -71,5 +74,12 @@ ItemList/styles/hovered_selected_focus = SubResource("StyleBoxFlat_8anr8")
 ItemList/styles/panel = SubResource("StyleBoxFlat_ep12d")
 ItemList/styles/selected = SubResource("StyleBoxFlat_y0m6u")
 ItemList/styles/selected_focus = SubResource("StyleBoxFlat_vdxj0")
+LineEdit/colors/caret_color = Color(0.8392157, 0.6392157, 0.09803922, 1)
+LineEdit/colors/clear_button_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+LineEdit/colors/clear_button_color_pressed = Color(1, 1, 1, 0)
+LineEdit/colors/selection_color = Color(0.5019608, 0.5019608, 0.5019608, 0)
+LineEdit/styles/focus = SubResource("StyleBoxFlat_7syhx")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_7syhx")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_7syhx")
 Panel/styles/panel = SubResource("StyleBoxFlat_sfbwk")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ubuie")

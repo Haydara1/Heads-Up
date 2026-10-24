@@ -3,6 +3,19 @@
 [ext_resource type="Script" uid="uid://ct8o1ih8rb6lq" path="res://scripts/lobby.gd" id="1_o1atq"]
 [ext_resource type="Shader" uid="uid://yoyjgm4sxky6" path="res://assets/CircleTransition.gdshader" id="2_5gu6x"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5gu6x"]
+bg_color = Color(0.38431373, 0.5647059, 0.89411765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q60fs"]
 shader = ExtResource("2_5gu6x")
 shader_parameter/circle_size = 0.0
@@ -35,10 +48,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=735768444]
+[node name="ColorRect" type="PanelContainer" parent="CenterContainer" unique_id=1553847771]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
-color = Color(0.60784316, 0.60784316, 0.60784316, 0.29411766)
+theme_override_styles/panel = SubResource("StyleBoxFlat_5gu6x")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1314532577]
 custom_minimum_size = Vector2(300, 0)
@@ -53,9 +66,10 @@ alignment = 1
 flat = true
 
 [node name="IPInput" type="LineEdit" parent="CenterContainer/VBoxContainer" unique_id=1182089093]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-placeholder_text = "Leave blank if host."
+placeholder_text = "Enter IP: leave blank if host."
 alignment = 1
 flat = true
 
@@ -68,6 +82,7 @@ flat = true
 [node name="JoinButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=511477960]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "Join
 "
 flat = true
@@ -87,5 +102,6 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/IPInput" to="." method="_on_ip_input_text_changed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
