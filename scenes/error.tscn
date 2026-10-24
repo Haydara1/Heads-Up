@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://xnbd7ioxculg"]
+
+[ext_resource type="Shader" uid="uid://yoyjgm4sxky6" path="res://assets/CircleTransition.gdshader" id="1_mv2uk"]
+[ext_resource type="Script" uid="uid://tgndf5gyt8ik" path="res://scripts/error.gd" id="1_vc1wo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vc1wo"]
+shader = ExtResource("1_mv2uk")
+shader_parameter/circle_size = 0.0
+shader_parameter/screen_width = 1280.0
+shader_parameter/screen_height = 720.0
+
+[node name="Error" type="Control" unique_id=1343806313]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vc1wo")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1193715590]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10980392, 0.36862746, 0.6745098, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2032795632]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=738007417]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="ErrorLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=481348602]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.90588236, 0.29803923, 0.23529412, 1)
+theme_override_font_sizes/font_size = 52
+text = "OH NO! AN ERROR HAS OCCURED!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckingLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=446437388]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 42
+text = "You should check the following:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HostLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1070921971]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 25
+theme_override_font_sizes/font_size = 32
+text = "If you are a host:
+- Check that all players have the same json file."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JoinLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=763864271]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 25
+theme_override_font_sizes/font_size = 32
+text = "If you are joining:
+- Check that you are connected to the same wifi as the host.
+- Check that  you have the correct IP address given by the host."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1555167992]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back to main menu"
+flat = true
+
+[node name="CircleTransition" type="ColorRect" parent="." unique_id=201884144]
+visible = false
+material = SubResource("ShaderMaterial_vc1wo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
