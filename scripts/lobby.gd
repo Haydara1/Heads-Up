@@ -7,6 +7,10 @@ extends Control
 @onready var circleTransition: ColorRect = $CircleTransition
 
 func _ready() -> void:
+	randomize()
+	
+	$ButtonPress.pitch_scale = randf_range(0.8, 1.2)
+	
 	var mat := circleTransition.material as ShaderMaterial
 
 	mat.set_shader_parameter("screen_width", get_viewport_rect().size.x)
@@ -29,6 +33,8 @@ func _ready() -> void:
 	
 
 func _on_host_button_pressed() -> void:
+	$ButtonPress.play()
+	
 	# Begin transition
 	var mat := circleTransition.material as ShaderMaterial
 	
@@ -60,6 +66,8 @@ func _on_host_button_pressed() -> void:
 
 
 func _on_join_button_pressed() -> void:
+	$ButtonPress.play()
+	
 	# Begin transition
 	var mat := circleTransition.material as ShaderMaterial
 	

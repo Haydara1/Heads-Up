@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://w2k8lcbi321i" path="res://scripts/gameplay.gd" id="1_7biu0"]
 [ext_resource type="Shader" uid="uid://yoyjgm4sxky6" path="res://assets/CircleTransition.gdshader" id="2_00tan"]
+[ext_resource type="AudioStream" uid="uid://deeluvcxx3t0j" path="res://assets/buttonPress.mp3" id="3_l1v76"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l1v76"]
 shader = ExtResource("2_00tan")
@@ -74,3 +75,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=1777896275]
+stream = ExtResource("3_l1v76")
+volume_db = -8.0
+
+[connection signal="pressed" from="VBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]

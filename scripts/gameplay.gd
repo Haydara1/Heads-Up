@@ -11,6 +11,10 @@ extends Control
 var transition_started := false
 
 func _ready() -> void:
+	randomize()
+	
+	$ButtonPress.pitch_scale = randf_range(0.8, 1.2)
+	
 	var mat := circleTransition.material as ShaderMaterial
 
 	mat.set_shader_parameter("screen_width", get_viewport_rect().size.x)
@@ -126,3 +130,7 @@ func _return_to_lobby_with_transition() -> void:
 		GameManager.return_to_lobby.rpc()
 	else:
 		GameManager.return_to_lobby.rpc_id(1)
+
+
+func _on_confirm_button_pressed() -> void:
+	$ButtonPress.play()

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ct8o1ih8rb6lq" path="res://scripts/lobby.gd" id="1_o1atq"]
 [ext_resource type="Shader" uid="uid://yoyjgm4sxky6" path="res://assets/CircleTransition.gdshader" id="2_5gu6x"]
+[ext_resource type="AudioStream" uid="uid://deeluvcxx3t0j" path="res://assets/buttonPress.mp3" id="3_q60fs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5gu6x"]
 bg_color = Color(0.38431373, 0.5647059, 0.89411765, 1)
@@ -101,6 +102,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=1748980762]
+stream = ExtResource("3_q60fs")
+volume_db = -8.0
 
 [connection signal="text_changed" from="CenterContainer/VBoxContainer/IPInput" to="." method="_on_ip_input_text_changed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]

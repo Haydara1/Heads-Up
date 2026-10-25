@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ckup5gdgw5wyq" path="res://assets/Pattern.png" id="2_ewema"]
 [ext_resource type="Shader" uid="uid://b67e4wgv7hbib" path="res://assets/scroller.gdshader" id="2_m3c5h"]
 [ext_resource type="Shader" uid="uid://yoyjgm4sxky6" path="res://assets/CircleTransition.gdshader" id="4_iq4lo"]
+[ext_resource type="AudioStream" uid="uid://deeluvcxx3t0j" path="res://assets/buttonPress.mp3" id="5_ao1dd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m3c5h"]
 shader = ExtResource("2_m3c5h")
@@ -130,6 +131,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=1814997211]
+stream = ExtResource("5_ao1dd")
+volume_db = -8.0
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Github" to="." method="_on_github_pressed"]
