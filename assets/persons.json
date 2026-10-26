@@ -9,13 +9,22 @@
 	"Leonard De Vinci",
 	"Cleopatra",
 	"Isaac Newton",
-    "Albert Einstein"
+    "Albert Einstein",
+	"Nikola Tesla",
+	"Leonhard Euler",
+	"Pythagoras",
+	"Thales",
+	"Nelson Mandela",
+	"Ghandi",
+	"Fredrich Nietzsche",
+	"Rene Descartes",
+	"Bernhard Riemann"
   ],
   "Sportsmen": [
 	"Zinédine Zidane",
 	"Kylian Mbappé",
 	"Muhammad Ali",
-	"Ronaldo",
+	"Critstiano Ronaldo",
 	"Simone Biles",
     "Usain Bolt"
   ],
@@ -25,7 +34,8 @@
 	"Mariah Carey",
 	"Céline Dion",
 	"Michael Jackson",
-    "Jungkook"
+    "Jungkook",
+	"Freddie Mercury"
   ],
   
   "Anime characters": [
@@ -37,16 +47,18 @@
 	"Ran",
 	"Naruto",
 	"Light Yagami",
-	"Johann",
-	"Eren",
+	"Johann Liebert",
+	"Eren Yeager",
 	"Roronoa Zoro",
-	"Koro sensei (Assassination Classroom)",
+	"Koro sensei",
 	"Kiki la petite sorcière",
 	"Sanji",
 	"Nami",
 	"Ryûk",
 	"Saitama",
-    "Tony Tony Chopper"
+    "Tony Tony Chopper",
+	"Goku",
+	"L",
   ],
 
   "Cartoons characters": [
@@ -73,7 +85,8 @@
 	"Marge Simpson",
 	"Lisa Simpson",
 	"Lloyd Garmadon",
-    "Shaun le mouton"
+    "Shaun le mouton",
+	"Schtroumpfette"
   ],
   "Film characters": [
 	"Gollum",
@@ -84,7 +97,7 @@
 	"Jack Sparrow",
 	"Harry Potter",
 	"Gandalf",
-	"Fodon",
+	"Frodo Baggins",
 	"Harley Quinn",
 	"Yoda",
 	"Luke Skywalker",
@@ -94,7 +107,14 @@
 	"Voldemort",
 	"Hermione Granger",
 	"Hercule Poirot",
-    "Sherlock Holmes"
+    "Sherlock Holmes",
+	"Superman",
+	"Ron Weisley",
+	"Gimli",
+	"Legolas",
+	"Aragorn",
+	"Sauron",
+	"Saraumon"
   ],
   "Video games characters": [
 	"Mario",
@@ -104,6 +124,19 @@
 	"Sonic",
 	"Donkey Kong",
 	"Bowser",
-    "Yoshi"
+    "Yoshi",
+	"Luigi",
+	"Tails",
+	"Sans",
+	"Toriel",
+	"Flowey",
+	"Papyrus",
+	"Mettaton",
+	"Alphys",
+	"Wall of Flesh",
+	"Moonlord",
+	"Plantera",
+	"Empress of Light",
+	"Eye of Cthulu"
   ]
 }
